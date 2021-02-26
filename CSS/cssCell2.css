@@ -1,0 +1,811 @@
+@font-face {  /*todo esto va a aparte y leugo lo metes donde lo necesites */
+    font-family:"Saiyan-Sans";                             /*podemos poner dos url para en el caso de que el navegador no soporte el primer url*/
+    src: url('../fuentes/Saiyan-Sans.ttf')  format('truetype') ; /*no son comillas es */  /* no sirve de nada el format solo por si acaso especificar el formato del archivo de texto*/
+    font-weight: normal;
+    font-style: normal;
+}
+/*----icono-------*/
+@font-face {/*iconos*/
+    font-family: 'iconos';
+    src:  url('../ico/fonts/icomoon.eot?qlw9jk');
+    src:  url('../ico/fonts/icomoon.eot?qlw9jk#iefix') format('embedded-opentype'),
+      url('../ico/fonts/icomoon.ttf?qlw9jk') format('truetype'),
+      url('../ico/fonts/icomoon.woff?qlw9jk') format('woff'),
+      url('../ico/fonts/icomoon.svg?qlw9jk#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+  }
+  .icon-heart:before,
+  .icon-heart2:before ,
+  .icon-fire:before,
+  .icon-power:before ,
+  .icon-puo:before,
+  .icon-shield:before
+   {
+    font-family: 'iconos' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+/*icono de las vidas*/
+.icon-heart:before {
+  content: "\e9da";
+  color:red;
+  padding-left:5px ;
+  font-size:2vw;
+  text-shadow: -4px 4px 0px black;
+  display: block;
+  }
+.icon-heart2:before {
+  content: "\1f32b";
+  color: rgb(25, 88, 25);
+  padding-left:5px ;
+  font-size:2vw;
+  text-shadow: -4px 4px 0px black;
+}
+/*icono de los botones*/
+/*atacar-----*/
+.icon-puo:before {/*atacar*/
+  content: "\e900";
+  font-size: 3vw;
+  background: linear-gradient(to bottom, rgba(191,3,47,1) 0%, rgba(191,3,47,1) 18%, rgba(191,3,47,1) 39%, rgba(143,0,33,1) 65%, rgba(143,0,33,1) 85%, rgba(143,0,33,1) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.568);
+  display: block;
+  padding: 3vw; 
+}
+/*defensa---------*/
+.icon-shield:before {/*defenderse*/
+  content: "\e9b4";
+  font-size: 3vw;
+  background: linear-gradient(to bottom, rgba(179,179,179,1) 0%, rgba(173,173,173,1) 42%, rgba(166,166,166,1) 61%, rgba(201,201,201,1) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.568);
+  display: block;
+  padding: 3vw;
+}
+/*carga ki  --------*/
+.icon-power:before {/*carga ki*/
+  content: "\e9b5";
+  font-size: 3vw;
+  background: linear-gradient(to right, rgba(252,234,186,1) 0%, rgba(252,234,186,1) 12%, rgba(255,207,87,1) 45%, rgba(250,183,0,1) 70%, rgba(251,223,147,1) 99%, rgba(251,223,147,1) 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.568);
+  display: block;
+  padding: 3vw;
+}
+/*TECNICA KI*/
+.icon-fire:before {/*tecnica  ki o  rafaga KI*/
+  content: "\e9a9";
+  font-size:  3.7vw;
+  color: rgb(41, 196, 216);
+  display: flex;
+  justify-content: center;
+  padding: 3vw;
+  position: relative;
+  top: 1vw;
+}
+.RafagaKI{
+  margin:0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  text-align:center;
+}
+.colaKame{
+  display:flex;
+  justify-content: center;
+  text-align:center;
+  flex-direction: column;
+  height: 9vw;
+  width: 9vw;
+}
+.marcoRafaga{
+  box-shadow: 0px 0px 9px 11px rgba(0,0,0,0.47);
+  display:flex;
+  justify-content: center;
+  text-align:center;
+  flex-direction: column;
+  background: rgba(179,220,237,1);
+  background: linear-gradient(to bottom, rgba(179,220,237,1) 0%, rgba(179,220,237,1) 3%, rgba(41,184,229,1) 50%, rgba(188,224,238,1) 97%, rgba(188,224,238,1) 100%);
+  border-radius: 12% 50% 50% 12%;
+  width: 9vw;
+  height: 2vw;
+}
+.kame{
+  display:flex;
+  justify-content: center;
+  text-align:center;
+  flex-direction: column;
+  transform: rotate(-90deg);
+}
+ /*--------FIN iconos------*/ 
+body{
+    margin: auto;
+    font-family:"Saiyan-Sans";
+    background-color: rgba(2, 2, 2, 0.897);
+    cursor: url("../cursor/cursor.cur"), auto; 
+}
+/*---FONDO-----------------*/
+.fondo{
+  width: 100%;
+  height: 100%;
+}
+.fondoCerca{
+  display: flex;
+  margin: auto;
+  width: 98vw;
+  height: auto;
+  border: 2px solid rgba(0, 0, 0, 0.747);
+  box-shadow: 0px 12px 20px 17px #4e4e4ea6;
+  border-radius: 5%;
+}
+/*---vidas----*/
+#vidaGohan,#vidaCell {
+  font-size: 3vw;
+  letter-spacing:3px;
+  color:rgb(184, 154, 24);
+}
+#cajaVida{
+  margin: 0 auto;
+  width: 100%;
+  background-color: rgb(254, 255, 214);
+  border-radius: 0px 0px 242px 242px;
+  box-shadow: black inset 0px -7px 20px 7px;
+}
+.marcoVidas{
+  width: 89%;
+  height: 2vw;
+  margin: 0 auto;
+  padding: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.vida{
+  display: flex;
+  align-items: center;
+}
+/*fin vidas*/
+/*animacion entrada de personajes*/
+
+/*personajes-----------------------------*/
+#marcoPersonajes{
+  margin: auto;
+  position: absolute;
+  width:100vw;
+  height: 2vw; 
+}
+.raya{
+  z-index: 89;
+  position: relative;
+  width: 17vw;
+  height: auto;
+  bottom: 28vw;
+  left: 14vw;
+  opacity: 0;
+  animation: raya 1s/*duracion*/ cubic-bezier(0.18, 0.89, 0.32, 1.28)  /*retraso*/ forwards;
+}
+@keyframes raya {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  10%{
+      opacity: 1;
+     }
+  20%{
+    opacity: 0;
+   }
+  30%{
+    opacity: 1;
+   }
+  40%{
+    opacity: 0;
+   }
+  99%{
+      opacity:1;
+     }
+  100%{
+      opacity:0;
+     }
+ }
+.gohanCapa{
+  z-index: 90;
+  position: relative;
+  width: 17vw;
+  height: auto;
+  bottom: 28vw;
+  right: 4vw;
+  opacity: 0;
+  animation: gohan 2s/*duracion*/ cubic-bezier(0.18, 0.89, 0.32, 1.28)  1s/*retraso*/ forwards;
+}
+@keyframes gohan {
+  /*inicio*/ 
+    0%{            
+      opacity: 0;
+     }  
+     99%{
+       opacity: 1;
+     }
+     100%{
+      opacity:0;
+     }
+ }
+ /*   ----*/
+.gohanCapa1{
+  z-index: 91;
+  position: relative;
+  width: 27vw;
+  height: auto;
+  bottom: 28vw;
+  right: 31vw;
+  opacity: 0;
+  animation: gohan2 2s/*duracion*/ cubic-bezier(0.18, 0.89, 0.32, 1.28) 3s /*retraso*/ forwards;
+ }
+ @keyframes gohan2 {
+  /*inicio*/ 
+    0%{            
+      opacity: 0;
+     }  
+     99%{
+       opacity: 1;
+     }
+     100%{
+      opacity:0;
+     }
+ }
+ /*   ----*/
+.gohanBase{
+  z-index: 92;
+  position: relative;
+  width: 23vw;
+  height: auto;
+  bottom: 28vw;
+  right: 55vw;
+  opacity: 0;
+  animation: gohan3 2s/*duracion*/ cubic-bezier(0.18, 0.89, 0.32, 1.28) 5s /*retraso*/ forwards;
+ }
+ @keyframes gohan3 {
+  /*inicio*/ 
+    0%{            
+      opacity: 0;
+     }  
+
+     100%{
+      opacity:1;
+     }
+ }
+ /*fin animacion gohan*/
+
+ /*cell   */
+.cellSalto{
+  z-index: 93;
+  position: absolute;
+  width: 21vw;
+  height: auto;
+  bottom: 9vw;
+  right: 6vw;
+  opacity: 0;
+  animation: cell1 2s/*duracion*/ cubic-bezier(0.18, 0.89, 0.32, 1.28) 5s /*retraso*/ forwards;
+}
+@keyframes cell1 {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+
+  50%{
+      opacity: 1;
+     }
+     99%{
+      opacity:1;
+     }
+  100%{
+      opacity:0;
+      bottom: 3vw;
+     }
+ }
+ /*-----*/
+ .cellCarga{
+  z-index: 94;
+  position: absolute;
+  width: 25vw;
+  height: auto;
+  bottom: 3vw;
+  right: 5vw;
+  opacity:0 ;
+  animation: cell2 3s/*duracion*/ cubic-bezier(0.18, 0.89, 0.32, 1.28) 7s /*retraso*/ forwards;
+ }
+@keyframes cell2 {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  50%{
+      opacity: 1;
+     }
+  99%{
+      opacity:1; 
+     }
+  100%{
+      opacity:0;
+     }
+ }
+ /*--------*/
+.cellBase{
+  z-index: 94;
+  position: absolute;
+  width: 21vw;
+  height: auto;
+  bottom: 3vw;
+  right: 7vw;
+  opacity: 0;
+  animation: cell3 3s/*duracion*/ cubic-bezier(0.18, 0.89, 0.32, 1.28) 10s /*retraso*/ forwards;
+ }
+@keyframes cell3 {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  50%{
+      opacity: 1;
+     }
+100%{
+      opacity:1;
+     }
+ }
+ /*----------------------FIN ANIMACION-------------------------------------------*/
+/*--------botonera ---------------- */
+#marcoBotonera{
+  margin:0 auto;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#boton{
+  margin: 1vw;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  background: rgba(252,234,186,1);
+  background: -moz-linear-gradient(top, rgba(252,234,186,1) 0%, rgba(252,234,186,1) 12%, rgba(255,207,87,1) 45%, rgba(250,183,0,1) 70%, rgba(251,223,147,1) 99%, rgba(251,223,147,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,234,186,1)), color-stop(12%, rgba(252,234,186,1)), color-stop(45%, rgba(255,207,87,1)), color-stop(70%, rgba(250,183,0,1)), color-stop(99%, rgba(251,223,147,1)), color-stop(100%, rgba(251,223,147,1)));
+  background: -webkit-linear-gradient(top, rgba(252,234,186,1) 0%, rgba(252,234,186,1) 12%, rgba(255,207,87,1) 45%, rgba(250,183,0,1) 70%, rgba(251,223,147,1) 99%, rgba(251,223,147,1) 100%);
+  background: -o-linear-gradient(top, rgba(252,234,186,1) 0%, rgba(252,234,186,1) 12%, rgba(255,207,87,1) 45%, rgba(250,183,0,1) 70%, rgba(251,223,147,1) 99%, rgba(251,223,147,1) 100%);
+  background: -ms-linear-gradient(top, rgba(252,234,186,1) 0%, rgba(252,234,186,1) 12%, rgba(255,207,87,1) 45%, rgba(250,183,0,1) 70%, rgba(251,223,147,1) 99%, rgba(251,223,147,1) 100%);
+  background: linear-gradient(to bottom, rgba(252,234,186,1) 0%, rgba(252,234,186,1) 12%, rgba(255,207,87,1) 45%, rgba(250,183,0,1) 70%, rgba(251,223,147,1) 99%, rgba(251,223,147,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fceaba', endColorstr='#fbdf93', GradientType=0 );
+  -webkit-box-shadow: inset 0px 0px 81px 8px rgba(145,119,42,1);
+  -moz-box-shadow: inset 0px 0px 81px 8px rgba(145,119,42,1);
+  box-shadow: inset 0px 0px 81px 8px rgba(145,119,42,1);
+  box-shadow: 0px 8px 0px #3e4201;
+  position: relative;
+  z-index:1;
+  top: 0px;
+  transition: all ease 0.1s;
+}
+#boton:active{
+  box-shadow: 0 3px 0 #3e4201;
+  top: 5px;
+}
+/*Tiempo de espera*/
+#wait{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12vw;
+  width: 100%;
+  background-color :rgb(189 177 5 / 83%);
+  position: absolute;
+  z-index: 2;
+  box-sizing: border-box;
+  background-clip: content-box;
+  border: 7px solid #353206;
+  border-style: dotted;
+  animation: animaWait 12s ease-in-out 0s forwards;/*son 12s*/
+  opacity: 1;
+}
+@keyframes animaWait {
+  /*inicio*/ 
+  0%{            
+      background-color :rgb(189 177 5 / 83%);
+     }  
+  5%{            
+      background-color :rgb(84 79 4 / 83%);
+     }
+  10%{            
+      background-color :rgb(189 177 5 / 83%);
+     } 
+  15%{            
+      background-color :rgb(84 79 4 / 83%);
+     }  
+  20%{            
+      background-color :rgb(189 177 5 / 83%);
+     } 
+  25%{            
+      background-color :rgb(84 79 4 / 83%);
+     }  
+  30%{            
+      background-color :rgb(189 177 5 / 83%);
+     }  
+  35%{            
+      background-color :rgb(84 79 4 / 83%);
+     }  
+  40%{            
+      background-color :rgb(189 177 5 / 83%);
+     }  
+  45%{            
+      background-color :rgb(84 79 4 / 83%);
+     }  
+  50%{            
+      background-color :rgb(189 177 5 / 83%);
+     }   
+  55%{
+      background-color :rgb(84 79 4 / 83%);
+     }
+  60%{
+      background-color :rgb(189 177 5 / 83%);
+     }
+  65%{
+      background-color :rgb(84 79 4 / 83%);
+     }
+  70%{
+      background-color :rgb(189 177 5 / 83%);
+     }
+  75%{
+      background-color :rgb(84 79 4 / 83%);
+     }
+  80%{
+      background-color:rgb(189 177 5 / 83%);
+     }
+  85%{
+      background-color :rgb(84 79 4 / 83%);
+     }
+  90%{
+      background-color :rgb(189 177 5 / 83%);
+     }
+  95%{
+      background-color :rgb(84 79 4 / 83%);
+      opacity: 1;
+     }
+  100%{
+      background-color :rgb(189 177 5 / 83%);
+      opacity: 0;
+     }
+}
+.textoWait {
+  -webkit-text-stroke: 7px black;
+  color: #676723a6;
+  font-size: 10vw;
+  z-index: 4;
+  position: absolute;
+  font-size: 10vw;
+  -webkit-text-stroke: 7px black;
+  color: #676723a6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
+}
+.barra1, .barra2{
+  width: 50vw;
+  height: 2vw;
+  background-color: rgb(253 185 3);
+  z-index: 3;
+  position: absolute;
+  border: 5px solid black;
+  box-shadow: 2px 14px 20px 4px black, inset 1px -4px 9px 4px #562f00;
+}
+.barra1{
+  transform: rotate(10deg);
+}
+.barra2{
+  transform: rotate(-10deg);
+}
+/*FIn Tiempo de espera*/
+/*---------ACCIONES---------*/
+/*---efectos--*/
+#impacto{
+  z-index: 94;
+  position: absolute;
+  width: 26vw;
+  height: auto;
+  bottom: 18vw;
+  right: 5.4vw;
+  opacity: 0;
+  /* animation:  frameImpacto 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0.5s  forwards; */
+}
+@keyframes frameImpacto {
+  /*inicio*/ 
+  0%{            
+    opacity: 0;
+    width: 26vw;
+    right: 5.4vw;
+    bottom: 18vw;
+    filter: brightness(3);
+   }  
+   50%{
+    opacity: 1;
+   }
+   100%{
+    width: 40vw;
+    right: -2vw;
+    bottom:12vw;
+   }
+} 
+#cubrirse{
+  z-index: 95;
+  position: absolute;
+  width: 32vw;
+  height: auto;
+  bottom: 2.3vw;
+  right: 62vw;
+  opacity: 0;
+  /* animation: efectoDefensa  3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards;  *//*se pone en el javascript*/
+}
+@keyframes efectoDefensa {
+  /*inicio*/ 
+  0%{            
+    filter: brightness(6);
+   }  
+   50%{
+    opacity: 1;
+   }
+   100%{
+   }
+} 
+#efectoCarga{
+  z-index: 95;
+  position: absolute;
+  width: 17vw;
+  height: auto;
+  bottom: 1.9vw;
+  right: 70.9vw;
+  opacity: 0;
+  /* animation: efectoki  3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards;  *//*se pone en el javascript*/
+}
+@keyframes efectoki  {
+  /*inicio*/ 
+  0%{    
+    opacity: 0;        
+    filter: brightness(3);
+   }  
+  20%{
+    filter: brightness(1); 
+   }
+  30%{
+    filter: brightness(6); 
+   }
+  40%{
+    filter: brightness(1); 
+   }
+  50%{
+    opacity: 1;
+    filter: brightness(3);
+   }
+  60%{
+    filter: brightness(1); 
+   }
+   70%{
+    filter: brightness(6); 
+   }
+  80%{
+    filter: brightness(3); 
+   }
+  90%{
+    filter: brightness(1); 
+   }
+  100%{
+    opacity: 1;
+   }
+} 
+#bola{
+  background: rgba(218,242,251,1);
+  background: linear-gradient(to right, rgba(218,242,251,1) 0%, rgba(168,225,245,1) 55%, rgba(60,200,251,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#daf2fb', endColorstr='#3cc8fb', GradientType=1 );
+  border-radius: 50%;
+  z-index: 95;
+  position: absolute;
+  width: 1vw;
+  height: 1vw;
+  bottom: 25vw;
+  right: 45vw;
+  opacity: 0;
+  /* animation: frameBola 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards; */
+}
+@keyframes frameBola {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  50%{
+      width: 9vw;
+      height: 9vw;
+      opacity: 1;
+      bottom: 25vw;
+      right: 45vw;
+     }
+  99%{
+      width: 9vw;
+      height: 9vw;
+      bottom: 16vw;
+      right: 15vw;
+      opacity: 1;
+     }
+  100%{
+      opacity: 0;
+     }
+ } 
+ #fuego{
+  z-index: 95;
+  position: absolute;
+  width: 10vw;
+  height: auto;
+  bottom: 15vw;
+  right:12vw;
+  opacity: 0;
+  /* animation: frameBola 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards; */
+}
+@keyframes frameFuego {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  90%{
+      width: 20vw;
+      bottom: 10vw;
+      right: 8vw;
+      transform: rotate(50deg);
+      opacity: 1;
+     }
+     100%{
+      opacity: 0;
+     }
+ } 
+/*---------------------*/
+/*gohan*/
+#AccionPuño{
+  z-index: 95;
+  position: absolute;
+  width: 11vw;
+  height: auto;
+  bottom: 18vw;
+  right: 17vw;
+  opacity: 0;
+/* animation: gohanPuño 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards;  *//*se pone en el javascript*/
+ }
+@keyframes gohanPuño {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  50%{
+      opacity: 1;
+     }
+  99%{
+      opacity:1;
+     }
+  100%{
+      opacity:1;
+     }
+ } 
+/*CELL*/
+#heridaCEll{
+  z-index: 95;
+  position: absolute;
+  width: 25vw;
+  height: auto;
+  bottom: 3vw;
+  right: 4vw;
+  opacity: 0;
+ /* animation: cellHerida 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards;*/
+}
+@keyframes cellHerida  {
+  /*inicio*/ 
+   0%{            
+      opacity: 0;
+     }  
+  50%{
+      opacity: 1;
+     }
+  99%{
+      opacity:1; 
+     }
+  100%{
+      opacity:0;
+     }
+ }
+ /*-------*/
+#AccionDefensa{
+  z-index: 95;
+  position: absolute;
+  width: 13vw;
+  height: auto;
+  bottom: 2.5vw;
+  right: 72.3vw;
+  opacity: 0;
+  /* animation: gohanDefensa 3s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards;  *//*se pone en el javascript*/
+}
+@keyframes gohanDefensa {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  50%{
+      opacity: 1;
+     }
+  99%{
+      opacity:1;
+     }
+  100%{
+      opacity:0;
+     }
+ } 
+ /*------*/
+ #AccionCarga{
+  z-index: 95;
+  position: absolute;
+  width: 19.5vw;
+  height: auto;
+  bottom: 1.1vw;
+  right: 68.9vw;
+  opacity: 0;
+  /* animation: frameKi 2s cubic-bezier(0.18, 0.89, 0.32, 1.28) 5s  forwards; */
+ }
+ @keyframes frameKi {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  50%{
+      opacity: 1;
+     }
+  99%{
+      opacity:1;
+     }
+  100%{
+      opacity:0;
+     }
+ } 
+ /*--------------*/
+ #Kame{
+  z-index: 92;
+  position: absolute;
+  width: 19vw;
+  height: auto;
+  bottom: 16vw;
+  right: 43vw;
+  opacity: 0;
+  /* animation: frameKame 2s cubic-bezier(0.18, 0.89, 0.32, 1.28) 0s  forwards; */
+ }
+ @keyframes frameKame {
+  /*inicio*/ 
+  0%{            
+      opacity: 0;
+     }  
+  50%{
+      opacity: 1;
+     }
+  99%{
+      opacity:1;
+     }
+     100%{
+      opacity:0;
+     }
+ } 

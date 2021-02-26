@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CellGamesPlay</title>
+    <link rel="stylesheet" href="CSS/cssCell2.css"> 
+</head>
+<body>
+   <!-- vidas -->
+<div id="cajaVida">
+    <div class="marcoVidas">
+        <span class="vida" id="vidaGohan"> Gohan 
+            <i class="icon-heart"></i>
+            <i class="icon-heart"></i>
+            <i class="icon-heart"></i>
+        </span>
+        <span  class="vida" id="vidaCell"> Cell
+             <i class="icon-heart2"></i>
+             <i class="icon-heart2"></i>
+             <i class="icon-heart2"></i> 
+        </span>
+    </div>
+</div> 
+<!-- escenario ring -->
+<div class="fondo">
+    <img  class="fondoCerca" src="arenaCerca.png" alt="fondoRing">       
+</div>
+   <!-- personajes animacion --> 
+ <div id="marcoPersonajes">
+       <!-- entrada gohan --> 
+       <img class="raya" src="../minijuego CELL/cellGames/gohans1/rayas.png" alt="Gohan"> 
+       <img class="gohanCapa" src="../minijuego CELL/cellGames/gohans1/gohanCapa.png" alt="Gohan">
+       <img class="gohanCapa1" src="../minijuego CELL/cellGames/gohans1/gohanCapa1.png" alt="Gohan">
+       <img class="gohanBase" src="../minijuego CELL/cellGames/gohans1/gohan1Base.png" alt="Gohan">
+    <!-- entrada cell--> 
+       <img class="cellSalto" src="../minijuego CELL/cellGames/pj cell/1 trafo/cell1Golpe.png" alt="cell">
+       <img class="cellCarga" src="../minijuego CELL/cellGames/pj cell/1 trafo/Cell1carga.png" alt="cell">
+       <img class="cellBase" src="../minijuego CELL/cellGames/pj cell/1 trafo/cell1Base.png" alt="cell"> 
+ 
+    <!-- acciones gohan  --> 
+       <img id="AccionPuño"src="cellGames/gohans1/gohangolpe.png" alt="ataque">
+       <img id="heridaCEll"src="cellGames/pj cell/1 trafo/cell1Daño.png" alt="recivirDaño">
+
+       <img id="AccionDefensa" src="cellGames/gohans1/gohan1defensa.png" alt="defenderse">
+       <img id ="AccionCarga" src="cellGames/gohans1/gohan1Carga.png" alt="CargaKi">
+        <img id ="Kame" src="cellGames/gohans1/goan kame.png" alt="kame">
+        <!-- efectos --> 
+       <img id="impacto"src="cellGames/efectos/daño3.png" alt="ataque">
+       <img id ="cubrirse"src="cellGames/efectos/Defensa3.png" alt="defensa">
+       <img id ="efectoCarga" src="cellGames/efectos/ki1.png" alt="efectoki">
+       <div id ="bola"> </div>    <!-- efectoKame --> 
+     <img id="fuego" src="cellGAmes/efectos/fuego1.png" alt="fuego">
+ </div>
+ <!--tiempo de espera --> 
+<div id="wait">
+    <div class="barra1"></div>
+    <div class="barra2"></div>
+    <span class="textoWait">Wait!</span>
+</div>
+<!--FIn tiempo de espera -->    
+<!-- botonera --> 
+<section id="marcoBotonera">
+    <button id="boton" class="Puño" >
+    <i class="icon-puo"></i>
+    </button>
+
+    <button id="boton" class="Defensa">
+        <i class="icon-shield"></i>
+    </button>
+
+    <button id="boton" class="CargaKi">
+        <i class="icon-power"></i>
+    </button>
+
+    <button id="boton" class="RafagaKi">
+        <div class="colaKame">
+            <div class="marcoRafaga">
+                <div class="kame"> <i class="icon-fire"></i> </div>
+        </div>
+    </button>
+<!-- FInbotonera --> 
+</section>
+<script src="js/jsCell.js"></script> 
+</body>
+</html>
